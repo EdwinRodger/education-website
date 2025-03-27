@@ -1,7 +1,41 @@
 {% extends 'layout.html' %}
 
 {% block main %}
-<div class="px-4 py-5 my-5 text-center">
-    <h1 class="display-5 fw-bold text-body-emphasis">Log In</h1>
-</div>
+<form>
+    <div class="form-group">
+        <label for="email" class="col-form-label">Email:</label>
+        <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
+    </div>
+    <div class="form-group">
+        <label for="password" class="col-form-label">Password:</label>
+        <input type="password" class="form-control" id="password" name="password" placeholder="Enter password">
+    </div>
+    <button type="submit" class="btn btn-primary mt-3">Submit</button>
+</form>
+
+<script>
+    // Get the form elements
+    const form = document.querySelector('form');
+    const emailInput = document.querySelector('#email');
+    const passwordInput = document.querySelector('#password');
+
+    // Add an event listener to the form submit event
+    form.addEventListener('submit', (e) => {
+        // Prevent the default form submission behavior
+        e.preventDefault();
+
+        // Get the email and password values
+        const email = emailInput.value;
+        const password = passwordInput.value;
+
+        // Check if the email and password are "root"
+        if (email === 'root@gmail.com' && password === 'root') {
+            // Redirect to the dashboard page
+            window.location.href = 'dashboard';
+        } else {
+            // Display an error message
+            alert('Invalid email or password');
+        }
+    });
+</script>
 {% endblock %}
